@@ -10,7 +10,7 @@
 
 			<div class="row">
 				<div class="col-lg-4">
-					<div class="btn btn-lg btn-danger btn-block" ng-class="{'active': setup.selected == 'unlocked'}" ng-click="setup.selected = 'unlocked'">
+					<div class="btn btn-lg btn-danger btn-block" ng-class="{'active': setup.experience == 'unlocked'}" ng-click="setup.experience = 'unlocked'">
 				        <div>
 					        <i class="fa fa-unlock fa-2x pull-left"></i>
 					        <span>Unlocked<br><small>Power Users</small></span>
@@ -19,7 +19,7 @@
 				</div>
 
 				<div class="col-lg-4">
-					<div class="btn btn-lg btn-info btn-block" ng-class="{'active': setup.selected == 'standard'}" ng-click="setup.selected = 'standard'">
+					<div class="btn btn-lg btn-info btn-block" ng-class="{'active': setup.experience == 'standard'}" ng-click="setup.experience = 'standard'">
 				        <div>
 					        <i class="fa fa-user fa-2x pull-left"></i>
 					        <span>Standard<br><small>Average Users</small></span>
@@ -28,7 +28,7 @@
 				</div>
 				
 				<div class="col-lg-4">
-					<div class="btn btn-lg btn-success btn-block" ng-class="{'active': setup.selected == 'guided'}" ng-click="setup.selected = 'guided'">
+					<div class="btn btn-lg btn-success btn-block" ng-class="{'active': setup.experience == 'guided'}" ng-click="setup.experience = 'guided'">
 				        <div>
 					        <i class="fa fa-map-marker fa-2x pull-left"></i>
 					        <span>Guided<br><small>New/Light Users</small></span>
@@ -36,7 +36,7 @@
 					</div> 
 				</div>
 			</div>
-			<div class="well" ng-switch="setup.selected">
+			<div class="well" ng-switch="setup.experience">
 	  			<p ng-switch-when="unlocked">
 	  				<strong>You chose the Unlocked experience. </strong><br>
 	  				You'll start with the full dashboard<br>
@@ -61,7 +61,11 @@
 			</div>
 		</div>
 		<div class="panel-footer">
-			<button class="btn btn-success pull-right" ng-disabled="!setup.selected" type="button">Get Started!</button>
+			<button 
+				class="btn btn-success pull-right" 
+				type="button"
+				ng-click="setup.saveUserExperience(setup.experience)" 
+				ng-disabled="!setup.experience">Get Started!</button>
 			<div class="clearfix"></div>
 		</div>
 	</div>

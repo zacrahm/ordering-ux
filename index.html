@@ -13,7 +13,8 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet"> -->
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/animations.css" rel="stylesheet">
     <link href="css/bootstrap.flatly.min.css" rel="stylesheet">
     <link href="css/ordering.tool.css" rel="stylesheet">
 </head>
@@ -57,7 +58,7 @@
     </nav>
 
 
-    <div id="view-container" class="container" ui-view></div>
+    <div id="view-container" class="container {{pageClass}}" ui-view></div>
 
     <script src="dist/vendor.js"></script>
     <script src="dist/ordering.tool.1.0.0.js"></script>    

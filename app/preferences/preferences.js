@@ -2,7 +2,7 @@
 	angular.module('ordering.tool.preferences', ['ordering.tool.preferences.setup', 'ngCookies'])
 	.factory('preferences', preferences);
 
-	function preferences($cookies) {
+	function preferences($cookies, $state) {
 		var service = {
 			Preferences: Preferences,
 			storePreferences: storePreferences,
@@ -36,8 +36,8 @@
 		}
 
 		function storePreferences(preferences) {
-			console.log("Let's store ", preferences);
 			$cookies.putObject('preferences', preferences);
+			$state.go('dashboard');
 		}
 
 	}

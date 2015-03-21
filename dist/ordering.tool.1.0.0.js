@@ -14,7 +14,8 @@
 	}
 	setupConfig.$inject = ["$stateProvider"];
 
-	function SetupController(preferences) {
+	function SetupController($scope, preferences) {
+		$scope.pageClass = 'inFromLeft';
 		var vm = this;
 		vm.experience = null;
 		vm.saveUserExperience = saveUserExperience;
@@ -23,14 +24,14 @@
 			preferences.createByProfile(experience);
 		}
 	}
-	SetupController.$inject = ["preferences"];
+	SetupController.$inject = ["$scope", "preferences"];
 
 })();
 (function() {
 	angular.module('ordering.tool.preferences', ['ordering.tool.preferences.setup', 'ngCookies'])
 	.factory('preferences', preferences);
 
-	function preferences($cookies) {
+	function preferences($cookies, $state) {
 		var service = {
 			Preferences: Preferences,
 			storePreferences: storePreferences,
@@ -64,15 +65,36 @@
 		}
 
 		function storePreferences(preferences) {
-			console.log("Let's store ", preferences);
 			$cookies.putObject('preferences', preferences);
+			$state.go('dashboard');
 		}
 
 	}
-	preferences.$inject = ["$cookies"];
+	preferences.$inject = ["$cookies", "$state"];
 })();
 (function() {
-	angular.module('ordering.tool', ['ui.router', 'ngMaterial','ngCookies', 'ordering.tool.preferences'])
+	angular.module('ordering.tool.dashboard', [])
+	.controller('DashboardController', DashboardController)
+	.config(dashboardConfig);
+
+
+	function dashboardConfig($stateProvider) {
+		$stateProvider
+			.state('dashboard', {
+				url: '/dashboard',
+				controller: 'DashboardController as dashboard', 
+				templateUrl: 'preferences/setup.html'
+			});
+	}
+	dashboardConfig.$inject = ["$stateProvider"];
+
+	function DashboardController($scope) {
+		$scope.pageClass = 'inFromRight';
+	}
+	DashboardController.$inject = ["$scope"]; 
+})();
+(function() {
+	angular.module('ordering.tool', ['ui.router', 'ngMaterial', 'ngAnimate', 'ngCookies', 'ordering.tool.preferences', 'ordering.tool.dashboard'])
 	.config(orderingToolConfig);
 
 	function orderingToolConfig($urlRouterProvider) {

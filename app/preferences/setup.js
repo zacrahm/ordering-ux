@@ -13,7 +13,8 @@
 			});
 	}
 
-	function SetupController(preferences) {
+	function SetupController($scope, preferences) {
+		$scope.pageClass = 'inFromLeft';
 		var vm = this;
 		vm.experience = null;
 		vm.saveUserExperience = saveUserExperience;

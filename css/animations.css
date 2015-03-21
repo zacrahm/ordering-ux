@@ -1,0 +1,31 @@
+[ui-view].ng-enter, [ui-view].ng-leave {
+  position: absolute;
+  left: 0;
+  right: 0;
+ 
+}
+
+
+[ui-view].inFromLeft.ng-enter 		{  
+    -webkit-animation:zoomInLeft 0.5s both ease-in;
+	-moz-animation:zoomInLeft 0.5s both ease-in;
+	animation:zoomInLeft 0.5s both ease-in;    
+}
+
+[ui-view].inFromLeft.ng-leave        {
+    -webkit-animation:zoomOutLeft 0.5s both ease-in;
+	-moz-animation:zoomOutLeft 0.5s both ease-in;
+	animation:zoomOutLeft 0.5s both ease-in;   
+}
+
+
+[ui-view].inFromRight.ng-enter        {
+    -webkit-animation:zoomInRight 0.6s both ease-in;
+	-moz-animation:zoomInRight 0.6s both ease-in;
+	animation:zoomInRight 0.6s both ease-in;   
+}
+[ui-view].inFromRight.ng-leave 		{  
+    -webkit-animation:zoomOutRight 0.5s both ease-in;
+	-moz-animation:zoomOutRight 0.5s both ease-in;
+	animation:zoomOutRight 0.5s both ease-in;    
+}

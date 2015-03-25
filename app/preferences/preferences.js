@@ -27,7 +27,7 @@
 					preferences = new Preferences('dashboard', false, false, false);
 					break;
 				case 'guided':
-					preferences = new Preferences('taskList', true, true, false);
+					preferences = new Preferences('tasks', true, true, false);
 					break;
 				default: 
 					throw 'Unsupported Preferences Profile';
@@ -37,7 +37,9 @@
 
 		function storePreferences(preferences) {
 			$cookies.putObject('preferences', preferences);
-			$state.go('dashboard');
+			var nextState = $cookies.getObject('preferences').defaultView;
+
+			$state.go(nextState);
 		}
 
 	}

@@ -9,7 +9,7 @@
 			.state('dashboard', {
 				url: '/dashboard',
 				controller: 'DashboardController as dashboard', 
-				templateUrl: 'preferences/setup.html'
+				templateUrl: 'dashboard/dashboard.html'
 			});
 	}
 
